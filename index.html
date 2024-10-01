@@ -8,7 +8,16 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <label for="btn-squares">Select how many <button id="btn-squares">squares</button> do you want</label>
+    <div class="options">
+        <label for="option-style">
+            Choose a option
+            <select id="option-style">
+                <option value="colorful" selected="selected">Colorful</option>
+                <option value="opacity">Opacity</option>
+            </select>
+        </label>
+        <label for="btn-squares">Select how many <button id="btn-squares">squares per row</button> do you want</label>
+    </div>
     <div class="container"></div>
 </body>
 </html>

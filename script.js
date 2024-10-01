@@ -1,27 +1,30 @@
 const body = document.querySelector("body");
 const container = document.querySelector(".container");
 const btn = document.querySelector("#btn-squares");
+const option = document.querySelector("#option-style")
 let squaresPerSide = 16;
 let grid = [];
-container.style.opacity = 0.5;
+let containerBackgroundColor = 100;
+
+console.log(option);
 
 createSquares(squaresPerSide);
 createRows(grid);
-colorDraw();
+colorDraw(option.value);
 
 function createGrid() {
+    do {
+        squaresPerSide = prompt("how many squares do you like? (choose no more than 100)", "16");
+        if (squaresPerSide === null) return;
+    } while (isNaN(squaresPerSide) || squaresPerSide > 100 || squaresPerSide < 1);
+
     grid.length = 0;
     removeSquares();
-    container.style.opacity = 0.5
-
-
-    do {
-        squaresPerSide = +prompt("how many squares do you like? (choose no more than 100)", "16");
-    } while (isNaN(squaresPerSide) || squaresPerSide === null || squaresPerSide > 100 || squaresPerSide < 1);
-
-    createSquares(squaresPerSide);
+    createSquares(+squaresPerSide);
     createRows(grid);
-    colorDraw()
+    colorDraw(option.value)
+    containerBackgroundColor = 100;
+    container.style.backgroundColor = "hsl(0, 0%, 100%)";
 }
 
 function createRows(grid){
@@ -56,15 +59,22 @@ function random() {
     return Math.floor(Math.random() * 256);
 }
 
-function colorDraw() {
+function changeOpacity() {
+    container
+}
+
+function colorDraw(option) {
     grid.forEach(row => {
         row.forEach(elem => {
             elem.addEventListener("mouseover", (event) => {
                 const square = event.currentTarget;
-                if (+container.style.opacity < 1 && !square.style.backgroundColor) {
-                    container.style.opacity = +container.style.opacity + (1 / (grid.length ** 2) / 2);
+                if (option === "colorful") {
+                    square.style.backgroundColor = `rgb(${random()}, ${random()}, ${random()})`;
+                } else if (option === "opacity" && containerBackgroundColor > 0) {
+                    containerBackgroundColor -= 10;
+                    console.log(containerBackgroundColor);
+                    container.style.backgroundColor = `hsl(0, 0%, ${containerBackgroundColor}%)`;
                 }
-                square.style.backgroundColor = `rgb(${random()}, ${random()}, ${random()})`;
             });
         });
     });

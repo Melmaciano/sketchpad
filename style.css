@@ -12,8 +12,10 @@ body {
     flex-direction: column;
 }
 
-label {
+.options {
     margin: 2% auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
