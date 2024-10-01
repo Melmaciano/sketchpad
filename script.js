@@ -3,6 +3,7 @@ const container = document.querySelector(".container");
 const btn = document.querySelector("#btn-squares");
 let squaresPerSide = 16;
 let grid = [];
+container.style.opacity = 0.5;
 
 createSquares(squaresPerSide);
 createRows(grid);
