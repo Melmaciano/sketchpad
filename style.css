@@ -3,14 +3,23 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    text-align: center;
+}
+
 .container {
-    margin: auto;
+    margin: 5% 15%;
+}
+
+.row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .square {
+    flex: 1 1 0;
     border: 1px solid black;
     aspect-ratio: 1.0;
 }
