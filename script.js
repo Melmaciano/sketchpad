@@ -11,7 +11,8 @@ colorDraw();
 function createGrid() {
     grid.length = 0;
     removeSquares();
-    count = 0;
+    container.style.opacity = 0.5
+
 
     do {
         squaresPerSide = +prompt("how many squares do you like? (choose no more than 100)", "16");
@@ -59,6 +60,9 @@ function colorDraw() {
         row.forEach(elem => {
             elem.addEventListener("mouseover", (event) => {
                 const square = event.currentTarget;
+                if (+container.style.opacity < 1 && !square.style.backgroundColor) {
+                    container.style.opacity = +container.style.opacity + (1 / (grid.length ** 2) / 2);
+                }
                 square.style.backgroundColor = `rgb(${random()}, ${random()}, ${random()})`;
             });
         });

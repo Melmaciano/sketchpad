@@ -10,6 +10,7 @@ body {
 
 .container {
     margin: 5% 15%;
+    opacity: 0.5;
 }
 
 .row {
